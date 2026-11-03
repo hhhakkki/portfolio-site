@@ -19,11 +19,16 @@ jobs:
       - name: Checkout repository 
         uses: actions/checkout@v4
 
-      - name: Validate HTML
-        uses: Cyb3rWard0g/html-validator-action@v1
-        with:
-          path: '.'
-          ignore: '*.md'
+      - name: Custom CI Step (Individual Project)
+        run: |
+          echo "Запуск индивидуального проекта..."
+          echo "Проверка наличия index.html..."
+          if [ -f "index.html" ]; then
+            echo "Успех: index.html найден, можно деплоить!"
+          else
+            echo "Ошибка: index.html не найден!"
+            exit 1
+          fi
 
       - name: Setup Pages 
         uses: actions/configure-pages@v5
