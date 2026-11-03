@@ -19,6 +19,14 @@ jobs:
       - name: Checkout repository 
         uses: actions/checkout@v4
 
+      # --- НАЧАЛО ИНДИВИДУАЛЬНОГО ПРОЕКТА (Линтер) ---
+      - name: Validate HTML
+        uses: Cyb3rWard0g/html-validator-action@v1
+        with:
+          path: '.'
+          ignore: '*.md'
+      # --- КОНЕЦ ИНДИВИДУАЛЬНОГО ПРОЕКТА ---
+
       - name: Setup Pages 
         uses: actions/configure-pages@v5
 
